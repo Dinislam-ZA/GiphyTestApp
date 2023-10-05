@@ -7,7 +7,7 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET("v1/gifs/search?api_key=kBTgPxYoFXwFyykfYxs8WqZ8ZjgSQvAr")
-    suspend fun searchGifs(@Query("q") query: String,
+    suspend fun searchGifs(@Query("q") query: String?,
                            @Query("limit") limit: Int,
                            @Query("offset") offset: Int):Response<SearchRespond>
 

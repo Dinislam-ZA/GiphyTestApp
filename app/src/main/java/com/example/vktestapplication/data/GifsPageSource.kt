@@ -4,10 +4,9 @@ import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import retrofit2.HttpException
-import javax.inject.Inject
 
 
-class GifsPageSource(private val query:String, private val gifsRepository: GifsRepository): PagingSource<Int, GifClass>() {
+class GifsPageSource(private val query:String?, private val gifsRepository: GifsRepository): PagingSource<Int, GifClass>() {
 
 
 

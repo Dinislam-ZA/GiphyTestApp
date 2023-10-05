@@ -1,9 +1,9 @@
 package com.example.vktestapplication
 
 import android.app.Application
+import android.content.Context
 import com.example.vktestapplication.di.AppComponent
 import com.example.vktestapplication.di.DaggerAppComponent
-import com.example.vktestapplication.di.modules.NetworkModule
 
 open class MyApplication: Application() {
 
@@ -15,3 +15,9 @@ open class MyApplication: Application() {
 
 
 }
+
+val Context.appComponent: AppComponent
+    get() = when (this) {
+        is MyApplication -> appComponent
+        else -> applicationContext.appComponent
+    }
