@@ -7,10 +7,8 @@ import androidx.paging.*
 import com.example.vktestapplication.data.GifClass
 import com.example.vktestapplication.data.GifsPageSource
 import com.example.vktestapplication.data.GifsRepository
-import com.example.vktestapplication.data.RetrofitClient
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.launch
 
 class MainViewModel (private val gifsRepository: GifsRepository): ViewModel() {
 

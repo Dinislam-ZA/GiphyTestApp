@@ -1,6 +1,5 @@
 package com.example.vktestapplication.data
 
-import com.google.gson.annotations.SerializedName
 
 
 data class SearchRespond(

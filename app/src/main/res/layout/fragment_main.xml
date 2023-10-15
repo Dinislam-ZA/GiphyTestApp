@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:hint="@string/gif_search_query"
+        app:iconifiedByDefault="true"
         android:background="@drawable/search_view_shape"
         android:backgroundTint="@color/searchview_background"
         app:layout_constraintStart_toStartOf="parent"

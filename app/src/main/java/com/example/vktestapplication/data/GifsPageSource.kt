@@ -25,7 +25,7 @@ class GifsPageSource(private val query:String?, private val gifsRepository: Gifs
             return if (response.isSuccessful) {
                 val gifs = response.body()!!.data
 
-                Log.d("gifs", gifs.map { it-> it.id }.toString())
+                Log.d("gifs", gifs.map { it.id }.toString())
                 val nextPageNumber = if (gifs.isEmpty()) null else pageNumber + 1
                 val prevPageNumber = if (pageNumber > 1) pageNumber - 1 else null
                 LoadResult.Page(gifs, prevPageNumber, nextPageNumber)

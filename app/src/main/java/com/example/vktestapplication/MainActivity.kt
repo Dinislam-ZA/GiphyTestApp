@@ -2,7 +2,6 @@ package com.example.vktestapplication
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.vktestapplication.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
 

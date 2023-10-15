@@ -1,6 +1,5 @@
 package com.example.vktestapplication.data
 
-import android.util.Log
 import retrofit2.Response
 import javax.inject.Inject
 

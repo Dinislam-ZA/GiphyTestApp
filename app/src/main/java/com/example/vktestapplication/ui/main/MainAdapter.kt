@@ -14,7 +14,7 @@ import com.example.vktestapplication.data.GifClass
 import com.example.vktestapplication.databinding.ItemLayoutBinding
 
 
-class MainAdapter(context: Context, val gifsOnClickListener: GifClickListener): PagingDataAdapter<GifClass, GifViewHolder>(GifDiffItemCallback) {
+class MainAdapter(context: Context, private val gifsOnClickListener: GifClickListener): PagingDataAdapter<GifClass, GifViewHolder>(GifDiffItemCallback) {
 
     private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
 
@@ -34,7 +34,7 @@ class MainAdapter(context: Context, val gifsOnClickListener: GifClickListener): 
 
 
 
-class GifViewHolder(itemView: View, val gifsOnClickListener: GifClickListener) : RecyclerView.ViewHolder(itemView) {
+class GifViewHolder(itemView: View, private val gifsOnClickListener: GifClickListener) : RecyclerView.ViewHolder(itemView) {
 
     private val viewBinding: ItemLayoutBinding = ItemLayoutBinding.bind(itemView)
 
