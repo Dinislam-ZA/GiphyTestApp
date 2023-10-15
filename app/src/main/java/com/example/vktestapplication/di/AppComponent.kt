@@ -2,6 +2,7 @@ package com.example.vktestapplication.di
 
 import com.example.vktestapplication.MainActivity
 import com.example.vktestapplication.di.modules.NetworkModule
+import com.example.vktestapplication.ui.infoscreen.InfoFragment
 import com.example.vktestapplication.ui.main.MainFragment
 import dagger.Component
 import javax.inject.Singleton
@@ -14,7 +15,6 @@ interface AppComponent {
 
     fun inject(mainFragment: MainFragment)
 
-    //fun mainViewModelFactory(gifsRepository: GifsRepository): MainViewModelFactory
+    fun inject(infoFragment: InfoFragment)
 
-    //fun mainViewModel(): MainViewModel
 }

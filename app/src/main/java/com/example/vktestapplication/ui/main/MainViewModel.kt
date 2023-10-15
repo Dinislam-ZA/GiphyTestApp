@@ -15,8 +15,8 @@ import kotlinx.coroutines.launch
 class MainViewModel (private val gifsRepository: GifsRepository): ViewModel() {
 
 
-    private val _query = MutableStateFlow("")
-    val query: StateFlow<String> = _query.asStateFlow()
+    private val _query:MutableStateFlow<String?> = MutableStateFlow(null)
+    val query: StateFlow<String?> = _query.asStateFlow()
 
 
 
@@ -24,24 +24,21 @@ class MainViewModel (private val gifsRepository: GifsRepository): ViewModel() {
     val gifs: StateFlow<PagingData<GifClass>> = query
         .map(::newPager)
         .flatMapLatest { pager -> pager.flow }
+        .cachedIn(viewModelScope)
         .stateIn(viewModelScope, SharingStarted.Lazily, PagingData.empty())
 
 
-    private fun newPager(query: String): Pager<Int, GifClass> {
-        return Pager(PagingConfig(25, enablePlaceholders = false), pagingSourceFactory = {
+    private fun newPager(query: String?): Pager<Int, GifClass> {
+        return Pager(PagingConfig(25, enablePlaceholders = true), pagingSourceFactory = {
             GifsPageSource(query, gifsRepository)
         })
     }
 
-    fun checkFun(){
-        viewModelScope.launch {
-            val response = RetrofitClient.apiService.searchGifs("sd", 5, 0)
-            Log.d("WTF", "${response.body()?.data}")
-        }
-    }
 
-    fun setQuery(query: String) {
+    fun setQuery(query: String?) {
+        val message = query ?: "Null query"
         _query.tryEmit(query)
+        Log.d("query in vm", query ?: "null")
     }
 
 }

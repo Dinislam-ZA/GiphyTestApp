@@ -21,9 +21,7 @@ class GifsPageSource(private val query:String?, private val gifsRepository: Gifs
             val pageNumber = params.key ?: 1
             val pageSize = params.loadSize.coerceAtMost(25)
             val offset = pageSize * pageNumber
-            Log.d("WTF", "$offset and $pageSize and $query")
             val response = gifsRepository.getSearchedGifs(query, pageSize, offset)
-            Log.d("WTF", "WTF")
             return if (response.isSuccessful) {
                 val gifs = response.body()!!.data
 
@@ -32,13 +30,14 @@ class GifsPageSource(private val query:String?, private val gifsRepository: Gifs
                 val prevPageNumber = if (pageNumber > 1) pageNumber - 1 else null
                 LoadResult.Page(gifs, prevPageNumber, nextPageNumber)
             } else {
+                Log.d("err", "error 1")
                 LoadResult.Error(HttpException(response))
             }
         } catch (e: HttpException) {
-            Log.d("WTF", "HttpException")
+            Log.d("err", "error 2")
             return LoadResult.Error(e)
         } catch (e: Exception) {
-            Log.d("WTF", "Another Exception")
+            Log.d("err", e.toString())
             return LoadResult.Error(e)
         }
     }

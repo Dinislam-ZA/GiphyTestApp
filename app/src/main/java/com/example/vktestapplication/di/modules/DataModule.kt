@@ -6,11 +6,11 @@ import dagger.Module
 import dagger.Provides
 
 
-@Module
-class DataModule {
-
-    @Provides
-    fun provideGifsRepository(apiService: ApiService):GifsRepository{
-        return GifsRepository(apiService)
-    }
-}
+//@Module
+//class DataModule {
+//
+//    @Provides
+//    fun provideGifsRepository(apiService: ApiService):GifsRepository{
+//        return GifsRepository(apiService)
+//    }
+//}

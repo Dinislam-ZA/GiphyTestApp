@@ -9,12 +9,13 @@ data class SearchRespond(
 
 
 data class GifClass(
-    var id:String? = null,
-    var url:String? = null,
-    var title:String? = null,
-    var username:String? = null,
+    val id:String?,
+    val url:String?,
+    val title:String?,
+    val username:String?,
     var images: GifImages
 )
+
 
 data class GifImages(
     var original:OriginalImage

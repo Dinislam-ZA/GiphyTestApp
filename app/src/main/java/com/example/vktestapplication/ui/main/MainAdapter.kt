@@ -14,7 +14,7 @@ import com.example.vktestapplication.data.GifClass
 import com.example.vktestapplication.databinding.ItemLayoutBinding
 
 
-class MainAdapter(context: Context,private val gifsOnClickListener: GifClickListener): PagingDataAdapter<GifClass, GifViewHolder>(GifDiffItemCallback) {
+class MainAdapter(context: Context, val gifsOnClickListener: GifClickListener): PagingDataAdapter<GifClass, GifViewHolder>(GifDiffItemCallback) {
 
     private val layoutInflater: LayoutInflater = LayoutInflater.from(context)
 
@@ -30,19 +30,23 @@ class MainAdapter(context: Context,private val gifsOnClickListener: GifClickList
 
 }
 
-class GifViewHolder(itemView: View,val gifsOnClickListener: GifClickListener) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+
+
+
+
+class GifViewHolder(itemView: View, val gifsOnClickListener: GifClickListener) : RecyclerView.ViewHolder(itemView) {
 
     private val viewBinding: ItemLayoutBinding = ItemLayoutBinding.bind(itemView)
 
     fun bind(gif: GifClass?) {
         with(viewBinding) {
-            Glide.with(itemView).load(gif?.images?.original?.url).into(imageView)
+            Glide.with(itemView).load(gif?.images?.original?.url).placeholder(R.drawable._15612_document_file_gif_icon).centerCrop().into(imageView)
+            imageView.setOnClickListener {
+                gifsOnClickListener.onGifClick(gif)
+            }
         }
     }
 
-    override fun onClick(p0: View?) {
-        gifsOnClickListener.onGifClick()
-    }
 }
 
 private object GifDiffItemCallback : DiffUtil.ItemCallback<GifClass>() {
@@ -58,6 +62,6 @@ private object GifDiffItemCallback : DiffUtil.ItemCallback<GifClass>() {
 
 interface GifClickListener{
 
-    fun onGifClick()
+    fun onGifClick(gif: GifClass?)
 
 }

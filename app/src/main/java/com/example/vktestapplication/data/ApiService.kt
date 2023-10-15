@@ -14,4 +14,5 @@ interface ApiService {
     @GET("v1/gifs/trending?api_key=kBTgPxYoFXwFyykfYxs8WqZ8ZjgSQvAr")
     suspend fun getAllGifs(@Query("limit") limit: Int,
                            @Query("offset") offset: Int):Response<SearchRespond>
+
 }

@@ -1,4 +1,13 @@
 <resources>
-    <string name="app_name">VkTestApplication</string>
+    <string name="app_name" translatable="false">Giphy</string>
     <string name="rc_view">RCVIEW</string>
+    <string name="gif_search_query">Enter query for gif searching</string>
+    <string name="title">Title:</string>
+    <string name="author">Author:</string>
+    <string name="id">ID:</string>
+    <string name="url">URL:</string>
+    <string name="no_title">No title</string>
+    <string name="no_username">Username is not available</string>
+    <string name="no_id">No id</string>
+    <string name="no_url">No url</string>
 </resources>
